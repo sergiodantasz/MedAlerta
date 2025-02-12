@@ -1,0 +1,31 @@
+[project]
+name = "MedAlerta"
+version = "0.1.0"
+description = "Sistema para lembrete de medicação utilizando sistema embarcado e interface web."
+authors = [{ name = "Sérgio Dantas", email = "sergiodnts828@gmail.com" }]
+readme = "README.md"
+license = { file = "../LICENSE" }
+requires-python = ">=3.12"
+dependencies = ["django (>=5.1.6,<6.0.0)", "django-environ (>=0.12.0,<0.13.0)"]
+
+[project.urls]
+repository = "https://github.com/sergiodantasz/MedAlerta"
+
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.9.6"
+
+[tool.ruff]
+target-version = "py312"
+
+[tool.ruff.lint]
+ignore = ["F401"]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
