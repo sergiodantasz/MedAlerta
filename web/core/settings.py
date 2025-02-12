@@ -19,6 +19,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "tailwind",
+    "theme",
 ]
 
 MIDDLEWARE = [
@@ -82,3 +84,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 if BROWSER_RELOAD:
     INSTALLED_APPS.append("django_browser_reload")
     MIDDLEWARE.append("django_browser_reload.middleware.BrowserReloadMiddleware")
+
+TAILWIND_APP_NAME = "theme"

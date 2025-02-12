@@ -1,0 +1,11 @@
+@import "tailwindcss" source("../../../");
+
+@theme {
+  --font-inter: Inter, serif;
+  --breakpoint-tn: 480px;
+  --breakpoint-2tn: 340px;
+}
+
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/aspect-ratio";
