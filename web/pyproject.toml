@@ -6,7 +6,11 @@ authors = [{ name = "Sérgio Dantas", email = "sergiodnts828@gmail.com" }]
 readme = "README.md"
 license = { file = "../LICENSE" }
 requires-python = ">=3.12"
-dependencies = ["django (>=5.1.6,<6.0.0)", "django-environ (>=0.12.0,<0.13.0)"]
+dependencies = [
+  "django (>=5.1.6,<6.0.0)",
+  "django-environ (>=0.12.0,<0.13.0)",
+  "django-tailwind-4 (>=0.1.4,<0.2.0)",
+]
 
 [project.urls]
 repository = "https://github.com/sergiodantasz/MedAlerta"
@@ -19,6 +23,7 @@ python = "^3.12"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.9.6"
+django-browser-reload = "^1.18.0"
 
 [tool.ruff]
 target-version = "py312"
