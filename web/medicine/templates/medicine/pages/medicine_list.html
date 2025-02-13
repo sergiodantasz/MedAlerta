@@ -1,0 +1,7 @@
+{% extends "global/pages/base.html" %}
+{% block main %}
+  <div class="flex flex-col items-center bg-lime-100 border border-lime-200 rounded-md px-2 py-1 2tn:px-4 2tn:py-2 text-center">
+    <h3 class="text-base font-medium">Você está logado como <span class="font-bold underline underline-offset-2 decoration-lime-400">{{ user.first_name }} {{ user.last_name }}</span>.</h3>
+    <h3 class="text-base font-medium">Seu usuário é <span class="font-bold underline underline-offset-2 decoration-lime-400">{{ user.username }}</span>.</h3>
+  </div>
+{% endblock main %}

@@ -1,0 +1,24 @@
+{% extends "global/pages/base.html" %}
+{% load static %}
+{% block main %}
+  <div class="flex flex-col items-center gap-5 2tn:gap-10 my-auto">
+    <div class="flex flex-col items-center gap-2">
+      <h3 class="font-bold text-lg 2tn:text-2xl text-center">Faça agora o seu cadastro no</h3>
+      <img class="w-[340px]" src="{% static "global/icons/logo.svg" %}" alt="MedAlerta icon.">
+    </div>
+    <form class="space-y-3 2tn:space-y-6 w-full" action="{{ action }}" method="post">
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="flex flex-col">
+          <label class="block font-medium mb-2 text-sm" for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+        </div>
+      {% endfor %}
+      <button class="button w-full" type="submit">Enviar</button>
+      {% if form.errors %}
+        {% include "global/partials/_errors.html" %}
+      {% endif %}
+    </form>
+    <p class="text-sm text-center">Já possui uma conta? <a class="font-semibold text-lime-600 transition-colors hover:text-lime-700 active:text-lime-800" href="{% url "user:login" %}">Faça login</a>.</p>
+  </div>
+{% endblock main %}

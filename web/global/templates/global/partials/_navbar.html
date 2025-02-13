@@ -1,0 +1,20 @@
+{% load static %}
+<nav class="bg-lime-100 border-b border-lime-200">
+  <header class="max-w-[1080px] mx-auto px-5 tn:px-10 py-2.5 flex items-center justify-between gap-4">
+    <a class="hidden tn:block" href="{% url "medicine:list" %}">
+      <img class="h-6" src="{% static "global/icons/logo.svg" %}" alt="MedAlerta logo.">
+    </a>
+    {% if user.is_authenticated %}
+      <form class="ml-auto" action="{% url "user:logout" %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="username" value="{{ user.username }}">
+        <button class="button" type="submit">Sair</button>
+      </form>
+    {% else %}
+      <div class="flex gap-2 w-full justify-between tn:w-fit">
+        <a class="button" href="{% url "user:login" %}" type="button">Entrar</a>
+        <a class="button" href="{% url "user:register" %}" type="button">Registrar</a>
+      </div>
+    {% endif %}
+  </header>
+</nav>

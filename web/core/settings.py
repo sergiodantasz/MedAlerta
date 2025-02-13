@@ -21,6 +21,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "tailwind",
     "theme",
+    "user",
+    "medicine",
 ]
 
 MIDDLEWARE = [
@@ -86,3 +88,7 @@ if BROWSER_RELOAD:
     MIDDLEWARE.append("django_browser_reload.middleware.BrowserReloadMiddleware")
 
 TAILWIND_APP_NAME = "theme"
+
+LOGIN_URL = "user:login"
+LOGIN_REDIRECT_URL = "medicine:list"
+LOGOUT_REDIRECT_URL = "user:login"

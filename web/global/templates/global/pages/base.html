@@ -1,6 +1,6 @@
 {% load tailwind_tags %}
 <!DOCTYPE html>
-<html class="font-inter" lang="pt-BR">
+<html class="font-inter scroll-smooth" lang="pt-BR">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +9,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     {% tailwind_css %}
+    {% block head %}{% endblock head %}
   </head>
-  <body>
-    {% block main %}{% endblock main %}
+  <body class="bg-lime-50 text-lime-950 min-h-dvh flex flex-col gap-6 2tn:gap-12">
+    {% include "global/partials/_navbar.html" %}
+    {% if messages %}
+      {% include "global/partials/_messages.html" %}
+    {% endif %}
+    <main class="max-w-[1080px] px-5 tn:px-10 mx-auto">
+      {% block main %}{% endblock main %}
+    </main>
+    {% include "global/partials/_footer.html" %}
   </body>
 </html>

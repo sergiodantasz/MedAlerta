@@ -6,6 +6,15 @@
   --breakpoint-2tn: 340px;
 }
 
+@layer components {
+  .button {
+    @apply text-lime-50 block text-center transition-colors bg-lime-600 hover:bg-lime-700 active:bg-lime-800 text-sm py-2 px-4 rounded-md font-semibold focus-visible:outline-2 focus:outline-lime-300 focus:outline-offset-2;
+  }
+  .form-field {
+    @apply bg-lime-50 w-full py-2 px-3 rounded-md border-lime-600 outline-lime-300 focus:outline-offset-2 focus:outline-2 text-sm ring-0;
+  }
+}
+
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/typography";
 @plugin "@tailwindcss/aspect-ratio";
