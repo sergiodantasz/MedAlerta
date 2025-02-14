@@ -90,5 +90,5 @@ if BROWSER_RELOAD:
 TAILWIND_APP_NAME = "theme"
 
 LOGIN_URL = "user:login"
-LOGIN_REDIRECT_URL = "medicine:list"
+LOGIN_REDIRECT_URL = "medicine:medicines"
 LOGOUT_REDIRECT_URL = "user:login"

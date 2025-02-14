@@ -1,0 +1,49 @@
+{% extends "global/pages/base.html" %}
+{% load static %}
+{% block main %}
+  <div class="flex flex-col items-center bg-lime-100 border border-lime-200 rounded-md px-2 py-1 2tn:px-4 2tn:py-2 text-center">
+    <h3 class="text-base font-medium">
+      Você está logado como <span class="font-bold underline underline-offset-2 decoration-lime-400">{{ user.first_name }} {{ user.last_name }}</span>.
+      Seu nome de usuário é <span class="font-bold underline underline-offset-2 decoration-lime-400">{{ user.username }}</span>.
+    </h3>
+  </div>
+  <div class="px-2 py-1 2tn:px-4 2tn:py-2 bg-lime-100 border border-lime-200 mt-5 2tn:mt-10 text-center rounded-t-md">
+    <h3 class="font-semibold text-lg">Medicamentos</h3>
+    <p>Os medicamentos inseridos e suas respectivas informações são exibidos abaixo.</p>
+  </div>
+  {% if medicines %}
+    <div class="overflow-x-auto rounded-b-md border border-lime-200">
+      <table class="rounded-md w-full table-auto">
+        <thead class="bg-lime-200 text-left">
+          <tr class="uppercase text-sm text-lime-900">
+            <th class="px-2 py-1 2tn:px-4 2tn:py-2 whitespace-nowrap">Nome</th>
+            <th class="px-2 py-1 2tn:px-4 2tn:py-2 whitespace-nowrap">Data e hora</th>
+            <th class="px-2 py-1 2tn:px-4 2tn:py-2 whitespace-nowrap">Status</th>
+            <th class="px-2 py-1 2tn:px-4 2tn:py-2 whitespace-nowrap">Ações</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-lime-200 bg-lime-100">
+          {% for medicine in medicines %}
+            <tr>
+              <td class="px-2 py-1 2tn:px-4 2tn:py-2 whitespace-nowrap">{{ medicine.name }}</td>
+              <td class="px-2 py-1 2tn:px-4 2tn:py-2 whitespace-nowrap">{{ medicine.date_and_time|date:"d/m/Y - G:i" }}</td>
+              <td class="px-2 py-1 2tn:px-4 2tn:py-2 whitespace-nowrap">
+                <span class="{{ medicine.get_status_class }}">{{ medicine.get_status_display }}</span>
+              </td>
+              <td class="px-2 py-1 2tn:px-4 2tn:py-2 whitespace-nowrap">
+                <a class="block w-fit" href="{% url "medicine:remove" medicine.id %}">
+                  <img class="size-5 2tn:size-6" src="{% static "medicine/icons/remove.svg" %}" alt="Remove icon.">
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="bg-lime-200 border border-lime-200 rounded-b-md px-2 py-1 2tn:px-4 2tn:py-2">
+      <p class="text-center">Não há nenhum medicamento cadastrado.</p>
+    </div>
+  {% endif %}
+  <a href="{% url "medicine:add" %}" class="button w-fit mx-auto mt-5 2tn:mt-10">Cadastrar medicamento</a>
+{% endblock main %}

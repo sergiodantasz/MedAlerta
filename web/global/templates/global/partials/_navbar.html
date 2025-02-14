@@ -1,7 +1,7 @@
 {% load static %}
 <nav class="bg-lime-100 border-b border-lime-200">
   <header class="max-w-[1080px] mx-auto px-5 tn:px-10 py-2.5 flex items-center justify-between gap-4">
-    <a class="hidden tn:block" href="{% url "medicine:list" %}">
+    <a class="hidden tn:block" href="{% url "medicine:medicines" %}">
       <img class="h-6" src="{% static "global/icons/logo.svg" %}" alt="MedAlerta logo.">
     </a>
     {% if user.is_authenticated %}

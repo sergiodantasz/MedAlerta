@@ -6,12 +6,12 @@ from django.contrib.messages import error, success
 from django.shortcuts import redirect, render
 from django.urls import reverse
 
-from .forms import LoginForm, RegisterForm
+from user.forms import LoginForm, RegisterForm
 
 
 def login(request):
     if request.user.is_authenticated:
-        return redirect(reverse("medicine:list"))
+        return redirect(reverse("medicine:medicines"))
     form = LoginForm(request.POST or None)
     if request.POST and form.is_valid():
         credentials = {
@@ -24,7 +24,7 @@ def login(request):
             return redirect(reverse("user:login"))
         login_(request, authenticated_user)
         success(request, "O login foi realizado com sucesso.")
-        return redirect(reverse("medicine:list"))
+        return redirect(reverse("medicine:medicines"))
     context = {
         "form": form,
         "action": reverse("user:login"),
@@ -34,7 +34,7 @@ def login(request):
 
 def register(request):
     if request.user.is_authenticated:
-        return redirect(reverse("medicine:list"))
+        return redirect(reverse("medicine:medicines"))
     form = RegisterForm(request.POST or None)
     if request.POST and form.is_valid():
         user = form.save(commit=False)
@@ -42,7 +42,7 @@ def register(request):
         user.save()
         login_(request, user)
         success(request, "O registro foi realizado com sucesso. Você já está logado.")
-        return redirect(reverse("medicine:list"))
+        return redirect(reverse("medicine:medicines"))
     context = {
         "form": form,
         "action": reverse("user:register"),
@@ -54,7 +54,7 @@ def register(request):
 def logout(request):
     if not request.POST or request.POST.get("username") != request.user.username:
         error(request, "Ocorreu um erro ao fazer o logout.")
-        return redirect(reverse("medicine:list"))
+        return redirect(reverse("medicine:medicines"))
     logout_(request)
     success(request, "O logout foi realizado com sucesso.")
-    return redirect(reverse("medicine:list"))
+    return redirect(reverse("medicine:medicines"))
