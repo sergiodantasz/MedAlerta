@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     "theme",
     "user",
     "medicine",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
@@ -92,3 +93,11 @@ TAILWIND_APP_NAME = "theme"
 LOGIN_URL = "user:login"
 LOGIN_REDIRECT_URL = "medicine:medicines"
 LOGOUT_REDIRECT_URL = "user:login"
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+    ),
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+}
