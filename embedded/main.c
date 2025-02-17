@@ -235,7 +235,6 @@ static void dns_callback(const char *name, const ip_addr_t *ipaddr, void *arg) {
     if (ipaddr && ipaddr->addr != 0) {
         *resolved_ip = *ipaddr;
         dns_resolved = 1;
-        printf("Resolved IP: %s\n", inet_ntoa(*ipaddr));
     } else {
         dns_resolved = -1;
     }
