@@ -89,6 +89,21 @@ dev = ["Sphinx (>=8.1.3)", "black (>=24.10.0)", "flake8 (>=7.1.1)", "isort (>=5.
 reload = ["django-browser-reload (>=1.17.0)"]
 
 [[package]]
+name = "djangorestframework"
+version = "3.15.2"
+description = "Web APIs for Django, made easy."
+optional = false
+python-versions = ">=3.8"
+groups = ["main"]
+files = [
+    {file = "djangorestframework-3.15.2-py3-none-any.whl", hash = "sha256:2b8871b062ba1aefc2de01f773875441a961fefbf79f5eed1e32b2f096944b20"},
+    {file = "djangorestframework-3.15.2.tar.gz", hash = "sha256:36fe88cd2d6c6bec23dca9804bab2ba5517a8bb9d8f47ebc68981b56840107ad"},
+]
+
+[package.dependencies]
+django = ">=4.2"
+
+[[package]]
 name = "ruff"
 version = "0.9.6"
 description = "An extremely fast Python linter and code formatter, written in Rust."
@@ -148,4 +163,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.12"
-content-hash = "1ba0bad379ba3a6db2e8e949e984e664f9b736c60e96e54d94aa226f7ab8063c"
+content-hash = "f991f7766bb4356761e58703dad085b0d98bba0366ed098bbd3ff92a9b111b69"
