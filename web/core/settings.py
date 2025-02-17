@@ -9,6 +9,7 @@ env.read_env(BASE_DIR / ".env", True)
 
 SECRET_KEY = env.str("SECRET_KEY")
 DEBUG = env.bool("DEBUG")
+PRODUCTION = env.bool("PRODUCTION")
 BROWSER_RELOAD = env.bool("BROWSER_RELOAD")
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
@@ -101,3 +102,11 @@ REST_FRAMEWORK = {
     ),
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
 }
+
+if PRODUCTION is True:
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
