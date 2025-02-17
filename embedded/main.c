@@ -28,7 +28,7 @@
 #define USERNAME "USERNAME"
 #define PASSWORD "PASSWORD"
 
-#define API_HOST ""
+#define API_HOST "med-alerta.vercel.app"
 #define API_PORT 443
 #define API_URL "/api/medicine/"
 
@@ -235,6 +235,7 @@ static void dns_callback(const char *name, const ip_addr_t *ipaddr, void *arg) {
     if (ipaddr && ipaddr->addr != 0) {
         *resolved_ip = *ipaddr;
         dns_resolved = 1;
+        printf("Resolved IP: %s\n", inet_ntoa(*ipaddr));
     } else {
         dns_resolved = -1;
     }
